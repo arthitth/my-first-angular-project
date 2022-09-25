@@ -1,0 +1,17 @@
+<h1>Template Syntax</h1>
+<input  *ngIf="!isDisabled" type="text" [(ngModel)]="productName">
+<button (click)="productName = 'A Tree'" [disabled]="isDisabled">Change Name</button>
+<div>{{ productName}}</div>
+
+<h1>Using Directives like ngFor and ngIf </h1>
+<button *ngIf="!isDisabled" (click)="onAddProduct()">Add Product</button>
+<div *ngFor="let product of products">{{ product }}</div>
+
+<h1>Custom-Bindings</h1>
+<app-product-detail (productClicked)="onRemoveProduct(product)"  *ngFor="let product of products" [productName]="product"></app-product-detail>
+
+<h1>Form</h1>
+<form (ngSubmit)="onAddProductForm(f)" #f="ngForm">
+  <input type="text" ngModel name="productName" required>
+  <button type="submit">Add Product</button>
+</form>
